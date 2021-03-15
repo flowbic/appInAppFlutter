@@ -204,11 +204,102 @@ class _HomeState extends State<Home> {
           ),
         );
 
+    aboutMeSection() => Container(
+          height: MediaQuery.of(context).size.height,
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 1000) {
+                return Column(
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Om mig',
+                            style: TextStyle(fontSize: 30),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
+                            style: TextStyle(
+                                fontSize: 20, wordSpacing: 1, height: 1.8),
+                          ),
+                          SizedBox(height: 40),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.4,
+                            child: DeviceFrame(
+                              device: Devices.ios.iPhone11,
+                              isFrameVisible: true,
+                              orientation: Orientation.portrait,
+                              screen: Container(
+                                color: Colors.blue,
+                                child: Center(child: Text('Hello')),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              }
+
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    padding: EdgeInsets.all(20),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Om oss',
+                          style: TextStyle(fontSize: 40),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem',
+                          style: TextStyle(
+                            fontSize: 20,
+                            wordSpacing: 1,
+                            height: 1.8,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.8,
+                    child: DeviceFrame(
+                      device: Devices.ios.iPhone11,
+                      isFrameVisible: true,
+                      orientation: Orientation.portrait,
+                      screen: Container(
+                        color: Colors.blue,
+                        child: Center(child: Text('Hello')),
+                      ),
+                    ),
+                  )
+                ],
+              );
+            },
+          ),
+        );
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
             renderHeroSection(),
+            aboutMeSection(),
             renderAboutTeamSection(),
           ],
         ),
